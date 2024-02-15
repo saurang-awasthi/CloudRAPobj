@@ -1,0 +1,89 @@
+@Metadata.layer: #CORE
+@UI: {
+ headerInfo: { typeName: 'Travel',
+               typeNamePlural: 'Travels',
+               title: { type: #STANDARD, label: 'Travel', value: 'TravelID' } },
+
+presentationVariant: [{ sortOrder: [{by: 'TravelId',direction: #DESC }] }]
+
+}
+annotate view ZAB_I_TRAV_AW02_M_Proj
+    with 
+{
+  @UI.facet: [{ id: 'Travel',
+                purpose: #STANDARD,
+                type: #IDENTIFICATION_REFERENCE,
+                label: 'Travel',
+                position: 10 },
+
+                { id: 'Booking',
+                purpose: #STANDARD,
+                type: #LINEITEM_REFERENCE,
+                label: 'Booking',
+                position: 20,
+                targetElement:   '_Booking' }]
+
+  @UI.identification: [{position: 1, label: 'TravelID' }]
+    @UI:{ lineItem: [{position: 10 }],
+        selectionField: [{position: 10 }]}
+    TravelId;
+  @UI.identification: [{position: 20 }]
+  @UI:{ lineItem: [{position: 20 }],
+        selectionField: [{position: 20 }]}
+  AgencyId;
+  
+  @UI.identification: [{position: 30 }]
+  @UI:{ lineItem: [{position: 30 }],
+        selectionField: [{position: 30 }]}
+  CustomerId;
+  
+  @UI.identification: [{position: 40 }]
+  @UI:{ lineItem: [{position: 40 }]}
+  BeginDate;
+  
+  @UI.identification: [{position: 50 }]
+  @UI:{ lineItem: [{position: 50 }]}
+  EndDate;
+  
+  @UI.identification: [{position: 60 }]
+  @UI:{ lineItem: [{position: 60 }]}
+  BookingFee;
+  
+  @UI.identification: [{position: 70 }]
+  @UI:{ lineItem: [{position: 70 }]}
+  TotalPrice;
+  
+  @UI.identification: [{position: 80 }]
+  @UI:{ lineItem: [{position: 80 }]}
+  Description;
+    @UI.identification: [{position: 90 },
+                      { type: #FOR_ACTION , dataAction: 'acceptTravel', label: 'Accept Travel'},
+                    
+                    { type: #FOR_ACTION , dataAction: 'rejectTravel', label: 'Reject Travel'}
+  
+  ]
+  @UI:{ lineItem: [{position: 90 },
+                    { type: #FOR_ACTION , dataAction: 'acceptTravel', label: 'Accept Travel'},
+                    
+                    { type: #FOR_ACTION , dataAction: 'rejectTravel', label: 'Reject Travel'}
+  
+  ] }
+    Status;
+    @UI.hidden: true
+    Createdby;
+        @UI.hidden: true
+    Createdat;
+        @UI.hidden: true
+    Lastchangedby;
+        @UI.hidden: true
+        
+    Lastchangedat;
+        @UI.hidden: true
+    local_Lastchangedat;
+    
+    
+    
+    /* Associations */
+
+    
+}

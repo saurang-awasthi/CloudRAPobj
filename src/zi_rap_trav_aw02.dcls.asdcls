@@ -1,0 +1,11 @@
+@EndUserText.label: 'Access control for Travel Interface View'
+@MappingRole: true
+define role ZI_RAP_TRAV_AW02 {
+    grant
+        select
+            on
+                ZI_RAP_TRAV_AW02
+                    where                  
+//                        (Status) = aspect pfcg_auth( ZOSTAT_AWA, ZOSTAT_AWA, ACTVT = '03' ) or true ;
+  Status is not null;                      
+}

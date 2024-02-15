@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service definition for sales order CDS'
+define service ZAw_SD_SO_CDS {
+  expose ZAW_C_CDS_SO;
+}

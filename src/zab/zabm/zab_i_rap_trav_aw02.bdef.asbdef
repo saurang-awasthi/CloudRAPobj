@@ -1,0 +1,27 @@
+managed;
+// implementation in class zbp_ab_i_rap_trav_aw02 unique;
+//strict ( 2 );
+
+define behavior for ZAB_I_RAP_TRAV_AW02 alias Travel
+persistent table zrap_atrav_aw02
+lock master
+authorization master ( instance )
+etag master local_Lastchangedat
+{
+  create;
+  update;
+  delete;
+  association _Booking { create; }
+}
+
+define behavior for ZAB_I_RAP_BOOK_AW02 alias Booking
+persistent table zrap_abook_aw02
+lock dependent by _Travel
+authorization dependent by _Travel
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) Travel_UUID;
+  association _Travel;
+}

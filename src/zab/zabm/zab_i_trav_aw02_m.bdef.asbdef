@@ -1,0 +1,44 @@
+managed;
+// implementation in class zbp_ab_i_trav_aw02_m unique;
+//strict ( 2 );
+
+define behavior for ZAB_I_TRAV_AW02_M alias Travel
+persistent table /dmo/travel_m
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  association _Booksupp;
+  association _Booking { create; }
+
+}
+
+define behavior for ZAB_I_BOOK_AW02_M alias Booking
+persistent table /dmo/booking_m
+lock dependent by _Travel
+authorization dependent by _Travel
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) TravelID;
+  association _Travel;
+  association _Booksupp { create; }
+}
+
+//define behavior for ZAB_I_BOOkSUPP_M alias Booksuppl
+//persistent table /dmo/booksuppl_m
+//lock dependent by _Travel
+//authorization dependent by _Travel
+//etag master LastChangedAt
+//{
+//  update;
+//  delete;
+//  association _Travel;
+//  field ( readonly ) TravelId, BookingId,BookingSupplementId;
+//  association _Booking;
+//
+//}

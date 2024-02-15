@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service definition for Travel view App AB'
+define service ZAB_SD_TRAV_AW02_M_PROJ {
+  expose ZAB_I_TRAV_AW02_M_Proj;
+  expose ZAB_I_BOOK_AW02_M_PROJ;
+}

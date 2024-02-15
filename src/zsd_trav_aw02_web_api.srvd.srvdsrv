@@ -1,0 +1,4 @@
+@EndUserText.label: 'SD for Travel view App using WEB API'
+define service ZSD_TRAV_AW02_WEB_API {
+  expose ZC_RAP_TRAV_AW02 as Travel;
+}
